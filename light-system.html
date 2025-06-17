@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="How I Built My Smart Bluetooth Light Control System"/>
+  <title>Light Control System – Rohan Kulkarni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+      color: #222;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    article {
+      padding: 2rem 0;
+    }
+
+    article h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      color: #333;
+    }
+
+    article p {
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    article pre {
+      background-color: #f4f4f4;
+      border-left: 4px solid #2575fc;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border-radius: 6px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 1rem 0 2rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0b57d0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #fff;
+      background-color: #222;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      main { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How I Built My Smart Light Control System</h1>
+  </header>
+
+  <main>
+    <a class="back-link" href="index.html">&larr; Back to homepage</a>
+
+    <article>
+      <h2>Turning a Bedroom into a Smart Club</h2>
+      <p>These lights are modeled after strobe style lighting at concerts</p>
+
+
+      <!-- Add this inside the <article> after the first paragraph -->
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; margin-top: 1.5rem; margin-bottom: 2rem;">
+        <iframe 
+          src="https://www.youtube.com/embed/8_cW37r0Q94" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        </iframe>
+      </div>
+
+
+
+      <p>The setup uses an Trione bluetooth reciever, addressable RGB lights, and a custom software that sends Bluetooth signals to control brightness, color, and effects.</p>
+
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>Trione bluetooth reciever</li>
+        <li>LED strips</li>
+        <li>Laptop</li>
+      </ul>
+
+      <h2>System Design</h2>
+      <p>Here's a high level system design. FFT analyzes audio output from a synthetic audio device called blackhole which is installed on the computer. Then, a frequency spectra is made to extract the compotent amplitudes of every frequency within the sound wave. Then, predictive models as well as other visualization tools are applied to the spectra and light sequences are generated (think, deep bass -> strobing, drops -> bright flashes, etc). These commands are then transmitted via an async thread to the bluetooth reciever, which displays the light sequences</p>
+
+
+      <h2>Challenges</h2>
+      <p>Bluetooth stability was the trickiest part. I spent days debugging unexpected disconnects, delays, and other interference. Eventually, I optimized packet sizes and update frequencies and added retry logic to get reliable performance.</p>
+
+      <h2>What's Next</h2>
+      <p>I’m currently building an ml model which integrates aspects of music theory to make the lights even more precise</p>
+
+      <p>You can check out the full project on GitHub:  
+        <a href="https://github.com/rohankulkz/bluetooth_light_system" target="_blank">rohankulkz/bluetooth_light_system</a>
+      </p>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2025 Rohan Kulkarni. All rights reserved.
+  </footer>
+</body>
+</html>

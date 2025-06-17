@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Tree Based Agent to Agent Architecture"/>
+  <title>Light Control System – Rohan Kulkarni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+      color: #222;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    article {
+      padding: 2rem 0;
+    }
+
+    article h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      color: #333;
+    }
+
+    article p {
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    article pre {
+      background-color: #f4f4f4;
+      border-left: 4px solid #2575fc;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border-radius: 6px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 1rem 0 2rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0b57d0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #fff;
+      background-color: #222;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      main { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tree Based Agent to Agent Architecture</h1>
+  </header>
+
+  <main>
+    <a class="back-link" href="index.html">&larr; Back to homepage</a>
+
+    <article>
+      <h2>Research into the usefullness and applications of tree based multi-agent systems</h2>
+      <p>Most current agentic systems are single agent systems, meaning they are single agents which have access to some form of toolkit and make decisions in response to input. These systems are very useful for tasks which have relativly consistent input and output structure (Q/A, document processing, etc.).</p>
+
+      <p>Multiagent systems on the other hand consist of multiple agents talking to eachother to produce a solution to a problem. Some frameworks for these systems include OpenAI's Agent Library, AWS Bedrock, and LangChain. Multiagent systems, in my research so far, show promise in situations with highly dynamic and poorly structured input data. For example, a task like scheduling meetings between several different people, each with their own unique preferenes and calendars, could benefit from a multi-agent system</p>
+
+
+
+      <h2>A New Approach: Using an Acyclic Tree Architecture</h2>
+      <p>Graphs and Trees are very similar data structures, but simoultaenously differ in fundamental ways. Primarly, trees are acyclic and so, each node is fundamentally seperated and distinct from other nodes at it's level. Utilizing this differnce, a tree based agent to agent system can be used produce several differnt outcomes, the best of which can be selected as the ultimate solution to a problem.</p>
+
+      <p>
+        What this means in terms of an agent to agent system is that when one agent calls another agent, it creates a new agentic instance, rather than recycling an only one. Although this does slightly worsen speed and token effeciency, in prelimary tests, has produced more robust and high quality human-like outcomes.  
+      </p>
+
+      <p>
+        Here is some data from an array of differnt tests I've been running for the last couple weeks using differnt agent to agent styles with OpenAI's o4-mini model:
+      </p>
+
+      <h2>Preliminary Results</h2>
+      <p>
+        P2P means Peer to Peer Multiagent, ie. agents talk directly to each other
+      </p>
+        <p>
+        Orchestrator is a tweaked architecture where agents talk to an orchestator agent which has stricter planning guilines for workflows
+      </p>
+
+    <table style="width:100%; border-collapse: collapse; margin-bottom: 2rem; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+      <thead style="background-color: #f8fafc;">
+        <tr>
+          <th style="padding: 1rem; text-align: left;">Scenario</th>
+          <th style="padding: 1rem; text-align: left;">High Quality</th>
+          <th style="padding: 1rem; text-align: left;">Total</th>
+          <th style="padding: 1rem; text-align: left;">Success Rate (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 1rem;">Complex P2P + Graph Agents</td>
+          <td style="padding: 1rem;">199</td>
+          <td style="padding: 1rem;">250</td>
+          <td style="padding: 1rem;">79.6%</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem;">Complex P2P + Tree Agents</td>
+          <td style="padding: 1rem;">227</td>
+          <td style="padding: 1rem;">250</td>
+          <td style="padding: 1rem;">90.8%</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem;">Orchestrator + Graph Agents</td>
+          <td style="padding: 1rem;">224</td>
+          <td style="padding: 1rem;">250</td>
+          <td style="padding: 1rem;">89.6%</td>
+        </tr>
+        <tr>
+          <td style="padding: 1rem;">Orchestrator + Tree Agents</td>
+          <td style="padding: 1rem;">236</td>
+          <td style="padding: 1rem;">250</td>
+          <td style="padding: 1rem;">94.4%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <canvas id="agentChart" height="180"></canvas>
+
+    <script>
+      const ctx = document.getElementById('agentChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'P2P + Graph',
+            'P2P + Tree',
+            'Orchestrator + Graph',
+            'Orchestrator + Tree'
+          ],
+          datasets: [{
+            label: 'High Quality Responses',
+            data: [199, 227, 224, 236],
+            backgroundColor: ['#60a5fa', '#4ade80', '#facc15', '#f87171'],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.raw}/250 high quality`
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 250,
+              title: {
+                display: true,
+                text: 'Responses'
+              }
+            }
+          }
+        }
+      });
+    </script>
+
+      <p></p>
+
+
+      <h2>What's Next</h2>
+      <p>Right now, I'm creating a tree multiagent model to provide high quality AI based scheduling services for businesses. The model is functioning quite well as is, but I'm intergrating new technologies to optimizing it and better its performance. I'm currently working on a system called branch pruning which identifies illogial treepaths and elimiates them to reduce costs and increase speed. This should significaltly better the performance of my model and get it prepared for commercial deployment.</p>
+
+      <p>If you are interesting in beta testing the software or contributing to it's development, feel free to email me at rohan.kulkz@gmail.com.</p>
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2025 Rohan Kulkarni. All rights reserved.
+  </footer>
+</body>
+</html>

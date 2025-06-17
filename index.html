@@ -1,77 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal website of Rohan Kulkarni">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Personal website of Rohan Kulkarni"/>
   <title>Rohan Kulkarni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+      color: #222;
+      animation: fadeIn 1s ease-in;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     header {
-      background-color: #333;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
-      padding: 1rem 2rem;
+      padding: 3rem 2rem;
       text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: slideDown 1s ease-out;
     }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
     main {
-      max-width: 800px;
-      margin: 2rem auto;
+      max-width: 900px;
+      margin: 3rem auto;
       padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
+
     section {
-      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    h1, h2 {
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      margin-top: 0;
       color: #444;
+      font-size: 1.8rem;
     }
+
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #0b57d0;
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: "✨ ";
+    }
+
+    .blog-post {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
+      transition: all 0.3s ease;
+    }
+
+    .blog-post:hover {
+      transform: translateX(5px);
+    }
+
+    .blog-post h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .blog-post p {
+      margin: 0.3rem 0 0.5rem;
+    }
+
+    .blog-post time {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
     footer {
-      background-color: #333;
+      background-color: #222;
       color: white;
       text-align: center;
       padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+      font-size: 0.9rem;
+      position: relative;
     }
-    a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 0 1rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1 style="color: white;">Rohan Kulkarni</h1>
-    <p>Engineer | Creator</p>
+    <h1>Rohan Kulkarni</h1>
+    <p>Engineer • Creator • AI Explorer</p>
   </header>
+
   <main>
     <section>
       <h2>About Me</h2>
-      <p>Hello! I'm Rohan Kulkarni, a passionate computer scientists from Berkeley with a love for AI, fintech, digital art, and innovative thinking. I enjoy building tools and platforms that make life easier, more efficient, and fun.</p>
+      <p>Hello! I'm <strong>Rohan Kulkarni</strong>, a computer scientist from Berkeley who thrives on creating things at the intersection of <em>AI, fintech, and digital art</em>. I build tools that are useful, efficient, and sometimes I just build things for fun.</p>
     </section>
-<section>
-  <h2>Projects</h2>
-  <ul>
-    <li>
-      <strong><a href="https://github.com/rohankulkz/bluetooth_light_system" target="_blank">Light Control System</a></strong> – OpenSource adaptive light control system. Makes your bedroom feel like a club
-    </li>
-      <li>
-      <a href="https://amzn.to/3Zw2HxQ" target="_blank">Lights Option 1</a>
-    </li>
-    <li>
-      <a href="https://amzn.to/4dAwhrN" target="_blank">Lights Option 2</a>
-    </li>
-  </ul>
-</section>
+
+    <section>
+      <h2>Blog</h2>
+
+      <div class="blog-post">
+        <h3><a href="agent-trees.html">Tree Based Agent to Agent Architechture</a></h3>
+        <time>June 17th, 2025</time>
+        <p>Looking into new styles of making agent to agent systems and exploring applications of such technologies</p>
+      </div>
+
+      <div class="blog-post">
+        <h3><a href="light-system.html">How I Built My Smart Lighting System</a></h3>
+        <time>May 28th, 2025</time>
+        <p>How I built my bluetooth lights</p>
+      </div>
+
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <strong><a href="https://github.com/rohankulkz/bluetooth_light_system" target="_blank">Light Control System</a></strong> – Adaptive Bluetooth-enabled room lighting. Bedroom to nightclub in one tap.
+        </li>
+        <li><a href="https://amzn.to/3Zw2HxQ" target="_blank">Lights Option 1</a></li>
+        <li><a href="https://amzn.to/4dAwhrN" target="_blank">Lights Option 2</a></li>
+      </ul>
+    </section>
+
+
     <section>
       <h2>Contact</h2>
       <p>Email: <a href="mailto:rohankulkz@gmail.com">rohankulkz@gmail.com</a></p>
@@ -79,6 +185,7 @@
       <p>LinkedIn: <a href="https://linkedin.com/in/rohankulkz" target="_blank">Rohan Kulkarni</a></p>
     </section>
   </main>
+
   <footer>
     <p>&copy; 2025 Rohan Kulkarni. All rights reserved.</p>
   </footer>
