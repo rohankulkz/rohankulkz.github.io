@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Agentic Data Processing"/>
+  <title>Agentic Data Processing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+      color: #222;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    article {
+      padding: 2rem 0;
+    }
+
+    article h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      color: #333;
+    }
+
+    article p {
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    article pre {
+      background-color: #f4f4f4;
+      border-left: 4px solid #2575fc;
+      padding: 1rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border-radius: 6px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 1rem 0 2rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0b57d0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #fff;
+      background-color: #222;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      main { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Data Processing</h1>
+  </header>
+
+  <main>
+    <a class="back-link" href="index.html">&larr; Back to homepage</a>
+
+    <article>
+      <h2>Using AI  to Process over 30,000 Hours of User data</h2>
+      <p>Providing high quality asynchrounous data analytics effeciently and at scale</p>
+
+      <h2>Tech Stack</h2>
+      <ul>
+        <li>AWS DynamoDB</li>
+        <li>AWS Lambda</li>
+        <li>AWS Comprehend</li>
+        <li>GPT-4.1-Nano</li>
+        <li>AWS SQS</li>
+
+      </ul>
+
+
+      <h2>System Design</h2>
+      <p>I needed fast and effecient data analytics on rapid conversation data, generated live and with conversations. Data was being processed and stored via a serverless Lambda function which placed data in DynamoDB. To integrate data analytics into the preixisting system, I utilzied an async queue which communicated data to an analytics function. This provided the advantages of an async system while also allowing for rapid analysis and updates. The analytics were a combination of AWS Comprehend requests to extract sentiment and conversation themes as well as LLM use to extract meaning and thematic shifts through conversation. This data was valuable to customers and was used for effective product placement, targeted advertisement, and general market analysis</p>
+
+
+      <h2>High Level System Diagram</h2>
+      <div class="mermaid">
+    graph TD
+      CD["Conversation Data"]
+      L1["AWS Lambda Function"]
+      DDB1["DynamoDB"]
+      SQS["SQS Queue"]
+      L2["AWS Lambda"]
+      NLP["Comprehend + LLM"]
+      DDB2["DynamoDB (Processed)"]
+      DASH["Analytics Dashboard"]
+
+      CD --> L1
+      L1 --> DDB1
+      L1 --> SQS
+      SQS --> L2
+      L2 --> NLP
+      NLP --> DDB2
+      DDB2 --> DASH
+  </div>
+
+
+
+    </article>
+  </main>
+
+  <footer>
+    &copy; 2025 Rohan Kulkarni. All rights reserved.
+  </footer>
+
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+</body>
+</html>
